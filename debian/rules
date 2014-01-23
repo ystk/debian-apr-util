@@ -4,8 +4,8 @@
 #export DH_VERBOSE=1
 export DH_OPTIONS
 
-#enable dpatch
-include /usr/share/dpatch/dpatch.make
+# for ppc64 on Ubuntu
+export DEB_GCC_NO_O3=1
 
 # These are used for cross-compiling and for saving the configure script
 # # from having to guess our platform (since we know it already)
@@ -42,28 +42,24 @@ else
 	TEST_TARGET =
 endif
 
-# disable tests on hurd until they are fixed (see #530287)
-DEB_HOST_ARCH_OS := $(shell dpkg-architecture -qDEB_HOST_ARCH_OS)
-ifeq (hurd, $(DEB_HOST_ARCH_OS))
-	TEST_TARGET =
-endif
-
 ifeq ($(DEB_BUILD_ARCH),i386)
-        CONFFLAGS=apr_lock_method=USE_PROC_PTHREAD_SERIALIZE
+	CONFFLAGS=apr_lock_method=USE_PROC_PTHREAD_SERIALIZE
 else
-        CONFFLAGS=ac_cv_func_pthread_mutexattr_setpshared=no ac_cv_func_sem_open=no
+	CONFFLAGS=ac_cv_func_pthread_mutexattr_setpshared=no ac_cv_func_sem_open=no
 endif
 
 CONFFLAGS += ac_cv_prog_AWK=mawk
 
 SHELL=/bin/bash
 
-config.status: configure.in patch-stamp
+config.status: configure.in
 	dh_testdir
 	./buildconf --with-apr=$(shell apr-1-config --srcdir)
-	$(CONFFLAGS) ./configure --host=$(DEB_HOST_GNU_TYPE) --build=$(DEB_BUILD_GNU_TYPE) --enable-layout=Debian --with-apr=/usr/bin/apr-1-config --with-ldap=yes --with-dbm=db46 --with-sqlite3 --with-pgsql=/usr --without-gdbm --without-sqlite2 --with-berkeley-db --with-mysql=/usr --with-freetds=/usr --with-odbc=/usr
+	$(CONFFLAGS) ./configure --host=$(DEB_HOST_GNU_TYPE) --build=$(DEB_BUILD_GNU_TYPE) --enable-layout=Debian --with-apr=/usr/bin/apr-1-config --with-ldap=yes --with-dbm=db --with-sqlite3 --with-pgsql=/usr --without-gdbm --without-sqlite2 --with-berkeley-db --with-mysql=/usr --with-freetds=/usr --with-odbc=/usr --with-openssl=/usr
 
-build: patch-stamp build-stamp
+build: build-arch build-indep
+build-arch: build-stamp
+build-indep: build-stamp
 
 build-stamp: config.status
 	dh_testdir
@@ -76,7 +72,7 @@ build-stamp: config.status
 
 	touch $@
 
-clean: unpatch
+clean:
 	dh_testdir
 	dh_testroot
 	rm -f build-stamp test-stamp
@@ -99,10 +95,11 @@ test-stamp: build
 install: build $(TEST_TARGET)
 	dh_testdir
 	dh_testroot
-	dh_clean -k
+	dh_prep
 	dh_installdirs -a
 
 	$(MAKE) install DESTDIR=$(CURDIR)/debian/tmp
+	perl -p -i -e "s,^dependency_libs=.*,dependency_libs=''," $(CURDIR)/debian/tmp/usr/lib/libaprutil-1.la
 
 binary-indep: build install
 
@@ -117,7 +114,7 @@ binary-arch: build install
 	dh_strip --dbg-package=libaprutil1-dbg
 	dh_compress
 	dh_fixperms
-	dh_makeshlibs -plibaprutil1
+	dh_makeshlibs -plibaprutil1 -X/apr-util-1/
 	dh_makeshlibs -n -Nlibaprutil1
 	dh_installdeb
 	dh_shlibdeps

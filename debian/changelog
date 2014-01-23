@@ -1,3 +1,88 @@
+apr-util (1.4.1-3) unstable; urgency=low
+
+  * Fix apr_password_validate() to work with sha512-crypt hashes.
+    Closes: #684268
+
+ -- Stefan Fritsch <sf@debian.org>  Wed, 15 Aug 2012 20:10:55 +0200
+
+apr-util (1.4.1-2) unstable; urgency=low
+
+  * Remove obsolete version on binutils dependency. Closes: #666260
+  * Re-enable test suite on hurd. Closes: #657043
+  * Switch VCS to git
+  * Switch to packaging format "3.0 quilt", remove dpatch. Thanks to Jari
+    Aalto for the patch. Closes: #664307
+  * Update to Standards-Version to 3.9.3 (no changes)
+  * Bump to debhelper 9.
+  * Remove obsolete workaround for #651147, ldap detection is fixed in 1.4.x
+  * Fix lintian warnings
+    - use dh_prep
+    - omit driver libraries from symbol files
+    - add build-arch and build-indep targets
+
+ -- Stefan Fritsch <sf@debian.org>  Sun, 20 May 2012 22:14:38 +0200
+
+apr-util (1.4.1-1) unstable; urgency=low
+
+  * New upstream release
+  * Build new apr_crypto API (using openssl).
+  * Stop repacking the source tarball to remove the MD4/MD5 implementations
+    derived from RSA's code. RSA has released a statement that revised the
+    conditions of use for this code. Debian uses the code according to the
+    conditions from this statement, which is now included in the copyright
+    file of the Debian package.
+
+ -- Stefan Fritsch <sf@debian.org>  Sun, 08 Jan 2012 20:44:17 +0100
+
+apr-util (1.3.12+dfsg-3) unstable; urgency=high
+
+  * Add workaround for ldap detection problem, to fix FTBFS with gcc 4.6.
+    Closes: #651147
+  * Remove Tollef Fog Heen and Ryan Niebur from uploaders. Thanks for your
+    work in the past.
+
+ -- Stefan Fritsch <sf@debian.org>  Wed, 07 Dec 2011 20:25:16 +0100
+
+apr-util (1.3.12+dfsg-2) unstable; urgency=low
+
+  * Fix unsafe pool usage in apr_thread_pool. This hopefully fixes the
+    occasional testreslist failures.
+
+ -- Stefan Fritsch <sf@debian.org>  Sun, 22 May 2011 20:37:08 +0200
+
+apr-util (1.3.12+dfsg-1) unstable; urgency=low
+
+  * New upstream version
+  * Make apu-config not output dbm libs by default. Closes: #622081
+  * Set DEB_GCC_NO_O3=1 for the benefit of ppc64 on Ubuntu.
+
+ -- Stefan Fritsch <sf@debian.org>  Sun, 22 May 2011 01:27:59 +0200
+
+apr-util (1.3.10+dfsg-2) unstable; urgency=low
+
+  * Remove libdb4.8-dev dependency in libaprutil1-dev. This allows packages
+    build-depending on apr-util1 to use a different version of db than
+    apr-util.
+  * With the libdb build-dependency decoupled from subversion, we can now
+    build-depend on libdb-dev instead of libdb4.8-dev. Users of APU_WANT_DB
+    in apu_want.h would have to depend on libdb-dev explicitly, but there
+    are none outside of apr-util itself. Closes: #621366
+  * Add configure support for libdb 5.1.
+  * Bump standards version to 3.9.2 (no changes)
+  * Fix some lintian warnings about the short descriptions.
+
+ -- Stefan Fritsch <sf@debian.org>  Fri, 08 Apr 2011 19:19:23 +0200
+
+apr-util (1.3.10+dfsg-1) unstable; urgency=low
+
+  * New upstream release.
+  * Add ${misc:Depends} to Depends.
+  * Remove some old Conflicts and Breaks.
+  * Bump standards version to 3.9.1:
+    - empty dependency_libs section in libaprutil-1.la
+
+ -- Stefan Fritsch <sf@debian.org>  Tue, 08 Feb 2011 22:53:01 +0100
+
 apr-util (1.3.9+dfsg-5) unstable; urgency=low
 
   * Backports from 1.3.10:
