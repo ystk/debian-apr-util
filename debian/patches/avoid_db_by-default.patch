@@ -1,10 +1,10 @@
 From: Stefan Fritsch <sf@debian.org>
 Subject: Make apu-config not output dbm libs by default. See #622081
 
-Index: trunk/apu-config.in
+Index: apr-util/apu-config.in
 ===================================================================
---- trunk.orig/apu-config.in
-+++ trunk/apu-config.in
+--- apr-util.orig/apu-config.in
++++ apr-util/apu-config.in
 @@ -32,7 +32,8 @@
  LDFLAGS="@APRUTIL_LDFLAGS@"
  ORIG_LDAP_LIBS="@LDADD_ldap@"

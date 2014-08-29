@@ -1,6 +1,7 @@
-debian/tmp/usr/include/apr-1.0
-debian/tmp/usr/lib/libapr*a
-debian/tmp/usr/lib/libaprutil-1.so
-debian/tmp/usr/lib/pkgconfig
-debian/tmp/usr/bin
-docs/dox/html usr/share/doc/libaprutil1-dev
+debian/build/docs/dox/html usr/share/doc/libaprutil1-dev
+build/find_apu.m4 usr/share/apr-1.0/build
+usr/include/apr-1.0
+usr/lib/*/libapr*a
+usr/lib/*/libaprutil-1.so
+usr/lib/*/pkgconfig
+usr/bin

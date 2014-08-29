@@ -1,3 +1,36 @@
+apr-util (1.5.3-2) unstable; urgency=medium
+
+  * Fix FTBFS with make 4.0. Closes: #748369
+
+ -- Stefan Fritsch <sf@debian.org>  Thu, 29 May 2014 16:52:08 +0200
+
+apr-util (1.5.3-1) unstable; urgency=low
+
+  * New upstream version.
+  * When querying the berkley db version, strip the epoch from the
+    version number.
+
+ -- Stefan Fritsch <sf@debian.org>  Sun, 24 Nov 2013 14:21:14 +0100
+
+apr-util (1.5.2-2) unstable; urgency=low
+
+  * Remove dbd-freetds driver because it has security issues.
+  * Switch build system to dh.
+  * Bump Standards-Version (no additional changes).
+  * Support multi-arch.
+  * Adjust dependencies to a multi-arch enabled apr.
+  * Speed up build by not searching for lots of berkley db versions that
+    are not installed. Closes: #717327
+
+ -- Stefan Fritsch <sf@debian.org>  Wed, 06 Nov 2013 22:27:45 +0100
+
+apr-util (1.5.2-1) unstable; urgency=low
+
+  * New upstream release.
+  * Ship find_apu.m4 in libaprutil1-dev. Closes: #699327
+
+ -- Stefan Fritsch <sf@debian.org>  Sun, 05 May 2013 15:43:34 +0200
+
 apr-util (1.4.1-3) unstable; urgency=low
 
   * Fix apr_password_validate() to work with sha512-crypt hashes.

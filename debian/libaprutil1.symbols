@@ -1,12 +1,16 @@
 libaprutil-1.so.0 libaprutil1 #MINVER#
 | libaprutil1-ldap , libaprutil1 #MINVER#
 | libaprutil1-dbd-sqlite3|libaprutil1-dbd-mysql|libaprutil1-dbd-odbc|libaprutil1-dbd-pgsql|libaprutil1-dbd-freetds , libaprutil1 #MINVER#
+ _crypt_blowfish_rn@Base 1.5.0
+ _crypt_gensalt_blowfish_rn@Base 1.5.0
+ _crypt_output_magic@Base 1.5.0
  apr_base64_decode@Base 1.2.7+dfsg
  apr_base64_decode_binary@Base 1.2.7+dfsg
  apr_base64_decode_len@Base 1.2.7+dfsg
  apr_base64_encode@Base 1.2.7+dfsg
  apr_base64_encode_binary@Base 1.2.7+dfsg
  apr_base64_encode_len@Base 1.2.7+dfsg
+ apr_bcrypt_encode@Base 1.5.0
  apr_brigade_cleanup@Base 1.2.7+dfsg
  apr_brigade_create@Base 1.2.7+dfsg
  apr_brigade_destroy@Base 1.2.7+dfsg
