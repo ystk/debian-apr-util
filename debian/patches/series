@@ -9,3 +9,4 @@ disable_expat_buildconf.patch
 avoid_db_by-default.patch
 test_verbose
 fix_doxygen_inputdir
+support_mariadb.patch

@@ -4,9 +4,9 @@ Priority: optional
 Maintainer: Debian Apache Maintainers <debian-apache@lists.debian.org>
 Uploaders: Stefan Fritsch <sf@debian.org>, Peter Samuelson <peter@p12n.org>
 Build-Depends: debhelper (>> 9~), autoconf, autotools-dev, mawk, libldap2-dev, libexpat1-dev, libdb-dev, libpcre3-dev, binutils, libapr1-dev (>> 1.4.8-2~), libsqlite3-dev, libpq-dev, python, libmysqlclient-dev, unixodbc-dev, doxygen, libssl-dev
-Standards-Version: 3.9.5
+Standards-Version: 3.9.6
 Vcs-Browser: http://anonscm.debian.org/gitweb/?p=pkg-apache/apr-util.git
-Vcs-Git: git://git.debian.org/git/pkg-apache/apr-util.git
+Vcs-Git: git://anonscm.debian.org/pkg-apache/apr-util.git
 Homepage: http://apr.apache.org/
 
 Package: libaprutil1
@@ -101,7 +101,7 @@ Description: Apache Portable Runtime Utility Library - PostgreSQL Driver
 Package: libaprutil1-dev
 Architecture: any
 Section: libdevel
-Depends: libaprutil1 (= ${binary:Version}), libldap2-dev, libexpat1-dev, libpcre3-dev, libapr1-dev (>= 1.2.2-1), libsqlite3-dev, libpq-dev, libmysqlclient-dev, ${misc:Depends}
+Depends: libaprutil1 (= ${binary:Version}), libldap2-dev, libexpat1-dev, libapr1-dev (>= 1.2.2-1), ${misc:Depends}
 Description: Apache Portable Runtime Utility Library - Development Headers
  APR is Apache's Portable Runtime Library, designed to be a support library 
  that provides a predictable and consistent interface to underlying 

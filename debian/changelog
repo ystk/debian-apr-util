@@ -1,3 +1,21 @@
+apr-util (1.5.4-1) unstable; urgency=medium
+
+  * New upstream release
+  * Remove dependencies on libpcre3-dev, libsqlite3-dev, libpq-dev,
+    and libmysqlclient-dev in libaprutil1-dev. They are no longer
+    necessary. Closes: #757140
+  * Bump standards version. No changes needed.
+
+ -- Stefan Fritsch <sf@debian.org>  Sat, 04 Oct 2014 14:19:46 +0200
+
+apr-util (1.5.3-3) unstable; urgency=medium
+
+  * Allow building with libmariadbclient-dev instead of
+    libmysqlclient-dev. Closes: #759158
+  * Update Vcs-Git URL in control file.
+
+ -- Stefan Fritsch <sf@debian.org>  Mon, 25 Aug 2014 22:10:38 +0200
+
 apr-util (1.5.3-2) unstable; urgency=medium
 
   * Fix FTBFS with make 4.0. Closes: #748369
