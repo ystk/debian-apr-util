@@ -1,3 +1,14 @@
+apr-util (1.5.4-1+deb8u1) jessie-security; urgency=medium
+
+  * Non-maintainer upload by the ELTS team.
+  * debian/patches/CVE-2017-12618.patch: validate the integrity of SDBM
+    database files. (Fixes: CVE-2017-12618)
+  * debian/patches/CVE-2022-25147.patch: add assertions to check if
+    a buffer length is bigger than a pre-determined value in
+    multiple methods in encoding/apr_base64.c. (Fixes: CVE-2022-25147)
+
+ -- Utkarsh Gupta <utkarsh@debian.org>  Sat, 04 Mar 2023 19:16:47 +0530
+
 apr-util (1.5.4-1) unstable; urgency=medium
 
   * New upstream release

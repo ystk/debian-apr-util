@@ -10,3 +10,5 @@ avoid_db_by-default.patch
 test_verbose
 fix_doxygen_inputdir
 support_mariadb.patch
+CVE-2017-12618.patch
+CVE-2022-25147.patch
